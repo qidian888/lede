@@ -67,7 +67,6 @@ jobs:
           git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
           git clone https://github.com/riverscn/luci-app-omcproxy.git
           git clone https://github.com/rosywrt/luci-theme-rosy
-          git clone https://github.com/nickberry17/nb_luci/tree/6a49d87b131c11341f8b821db4fb85331c98f55f/applications/luci-app-udpxy
           
           
           #
@@ -157,7 +156,6 @@ jobs:
           CONFIG_PACKAGE_luci-app-webadmin=y
           CONFIG_PACKAGE_luci-app-wireguard=y
           CONFIG_PACKAGE_luci-app-wrtbwmon=y
-          CONFIG_PACKAGE_luci-app-udpxy=y
           CONFIG_PACKAGE_luci-app-omcproxy=y
           EOF
           # LuCI主题:
