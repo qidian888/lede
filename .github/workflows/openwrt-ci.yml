@@ -10,9 +10,9 @@
 name: 起点编译V5.0
 
 on:
-  push:
-    branches: 
-      - master
+  # push:
+    # branches: 
+      # - master
   # schedule:
   #   - cron: 0 20 * * *
   # release:
@@ -59,7 +59,12 @@ jobs:
           rm -f ./.config*
           touch ./.config
 
-          
+       - name: 自定义插件主题。
+        run: |
+          cd package
+          mkdir openwrt-packages
+          cd openwrt-packages
+          git clone https://github.com/riverscn/luci-app-omcproxy.git
           
           #
           # ========================固件定制部分========================
@@ -148,6 +153,8 @@ jobs:
           CONFIG_PACKAGE_luci-app-webadmin=y
           CONFIG_PACKAGE_luci-app-wireguard=y
           CONFIG_PACKAGE_luci-app-wrtbwmon=y
+          CONFIG_PACKAGE_luci-app-udpxy=y
+          CONFIG_PACKAGE_luci-app-omcproxy=y
           EOF
           # LuCI主题:
           cat >> .config <<EOF
