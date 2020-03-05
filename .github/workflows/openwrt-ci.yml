@@ -7,7 +7,7 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 
-name: 起点编译V6.0
+name: 起点编译V7.0
 
 on:
   push:
@@ -58,13 +58,7 @@ jobs:
         run: |
           rm -f ./.config*
           touch ./.config
-      - name: 自定义插件主题。
-        run: |
-          cd package
-          mkdir openwrt-packages
-          cd openwrt-packages
-          git clone https://github.com/riverscn/luci-app-omcproxy.git
-          
+      
           #
           # ========================固件定制部分========================
           # 
@@ -95,9 +89,9 @@ jobs:
           # 
           # 编译x64固件:
           cat >> .config <<EOF
-          CONFIG_TARGET_x86=y
-          CONFIG_TARGET_x86_64=y
-          CONFIG_TARGET_x86_64_Generic=y
+          CONFIG_TARGET_ipq806x=y
+          CONFIG_TARGET_ipq806x_DEVICE_linksys_ea8500=y
+          CONFIG_TARGET_ipq806x_Generic=y
           EOF
           # 固件压缩:
           cat >> .config <<EOF
@@ -153,7 +147,6 @@ jobs:
           CONFIG_PACKAGE_luci-app-wireguard=y
           CONFIG_PACKAGE_luci-app-wrtbwmon=y
           CONFIG_PACKAGE_luci-app-udpxy=y
-          CONFIG_PACKAGE_luci-app-omcproxy=y
           EOF
           # LuCI主题:
           cat >> .config <<EOF
